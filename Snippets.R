@@ -78,7 +78,7 @@ predict(exp_ranger, henry)
 #
 # 9. Variable attributions - Shapley valyes
 
-sh_ranger <- predict_parts(exp_ranger, henry, type = "shap")
+sh_ranger <- predict_parts(exp_ranger, henry, type = "shap", B = 1)
 
 plot(sh_ranger, show_boxplots = FALSE) + 
    ggtitle("Shapley values for Henry","")
@@ -113,9 +113,9 @@ plot(mp_ranger, show_boxplots = FALSE) +
 #
 # 12. Variable importance for two models
 
-mp_ranger <- model_parts(exp_ranger)
+mp_ranger <- model_parts(exp_ranger, B = 1)
 
-mp_rms <- model_parts(exp_rms)
+mp_rms <- model_parts(exp_rms, B = 1)
 
 plot(mp_ranger, mp_rms, show_boxplots = FALSE, bar_width = 5) + 
   ggtitle("Variable importance","")
@@ -150,6 +150,8 @@ plot(cp_ranger, variables = "class", categorical_type = "bars") +
 # 17. Model profile - aveage across individual CPs
 
 mp_ranger <- model_profile(exp_ranger)
+
+plot(mp_ranger, variables = "age")
 
 plot(mp_ranger, variables = "age", geom = "points") + 
    ggtitle("Partial dependence","")
