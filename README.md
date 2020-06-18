@@ -2,11 +2,15 @@
 
 Workshop *Explanation and exploration of machine learning models with R and DALEX* at [eRum 2020](https://2020.erum.io/) 
 
-Tutors from [MI2DataLab](https://mi2-warsaw.github.io/)
+This page: http://tiny.cc/eRum2020
+
+## Tutors 
 
 * Przemysław Biecek
 * Anna Kozak
 * Szymon Maksymiuk
+
+from [MI2DataLab](https://mi2-warsaw.github.io/)
 
 ## Prepare yourself
 
