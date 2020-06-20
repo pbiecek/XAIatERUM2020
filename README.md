@@ -10,6 +10,7 @@ This page: http://tiny.cc/eRum2020
 
 * [Cheatsheet with all important materials](Cheatsheet.pdf) - You can print it as an 8-page brochure.
 * [Slides for the workshop](Slides.pdf) - We're going to discuss the cheatsheet materials piece by piece.
+* [Slides with Notes](SlidesWithNotes.pdf) - Slides with drawings taken during the workshop.
 * [R snippets for the workshop](Snippets.R) - To make it easier to reproduce all the results.
 
 ## Prepare yourself
