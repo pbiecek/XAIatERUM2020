@@ -62,11 +62,11 @@ mp_rms
 #
 # 7. it is easier to compare models with charts
 
+plot(mp_ranger, mp_rms, geom = "boxplot")
+
 plot(mp_ranger, mp_rms, geom = "roc")
 
 plot(mp_ranger, mp_rms, geom = "lift")
-
-plot(mp_ranger, mp_rms, geom = "boxplot")
 
 #
 # 8. Let's focus on a single observations
@@ -78,7 +78,8 @@ predict(exp_ranger, henry)
 #
 # 9. Variable attributions - Shapley valyes
 
-sh_ranger <- predict_parts(exp_ranger, henry, type = "shap", B = 1)
+sh_ranger <- predict_parts(exp_ranger, henry, 
+                           type = "shap", B = 1)
 
 plot(sh_ranger, show_boxplots = FALSE) + 
    ggtitle("Shapley values for Henry","")
@@ -86,7 +87,8 @@ plot(sh_ranger, show_boxplots = FALSE) +
 #
 # 10. Variable attributions - Break-down values
 
-bd_ranger <- predict_parts(exp_ranger, henry, type = "break_down_interactions")
+bd_ranger <- predict_parts(exp_ranger, henry, 
+                        type = "break_down_interactions")
 bd_ranger
 plot(bd_ranger, show_boxplots = FALSE) + 
   ggtitle("Break down values for Henry","") + 
@@ -96,9 +98,9 @@ plot(bd_ranger, show_boxplots = FALSE) +
 # 11. Variable attributions - Break-down with specified order
 
 bd_ranger <- predict_parts(exp_ranger, henry, 
-                    order = c("age", "gender", "fare", "class",
-                            "parch", "sibsp", "embarked"))
- 
+            order = c("age", "gender", "fare", "class",
+                    "parch", "sibsp", "embarked"))
+
 plot(bd_ranger)  + 
   scale_y_continuous("",limits = c(0.09,0.33))
 
@@ -178,3 +180,40 @@ plot(mp_ranger, variables = "age") +
 library(modelStudio)
 
 modelStudio(exp_ranger)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+model_apart <- ranger(m2.price ~ ., data = apartments)
+
+exp_ranger <- explain(model_apart,
+                      data = apartments_test,
+                      y = apartments_test$m2.price)
+
+predict(exp_ranger, apartments_test[1,])
+
+
+mp_ranger <- model_performance(exp_ranger)
+
+predict_parts(exp_ranger, apartments[1,])
+
+
+plot(mp_ranger, geom = "boxplot")
+
+
+
+
+mp_ranger <- model_profile(exp_ranger)
+
+plot(mp_ranger)
